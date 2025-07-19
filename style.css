@@ -1,0 +1,398 @@
+/* — Variables & Reset — */
+:root {
+    --bg: #000;
+    --fg: #fff;
+    --muted: #222;
+    --primary: #2563eb;
+    --radius: 16px;
+    --gap: 40px;
+    /* offsets for the description under the hero title */
+    --desc-offset-x: -400px;      /* ← adjust this to move the description left/right */
+    --desc-offset-y: 250px;       /* ← adjust this to move the description up/down */
+    /* size controls for the “Why Choose” image (image2) */
+    --choose-img-width: 650px;    /* ← adjust this to change image2 width */
+    --choose-img-height: auto;    /* ← adjust this to change image2 height */
+    /* size controls for the “What We Offer” image (image1) */
+    --offer-img-width: 750px;     /* ← adjust this to change image1 width */
+    --offer-img-height: auto;     /* ← adjust this to change image1 height */
+    /* offsets for the HERO title/subtitle */
+    --title-offset-x: 0px;        /* ← adjust this to move the hero title left/right */
+    --title-offset-y: 80px;       /* ← adjust this to move the hero title up/down */
+  
+    /* global section title size (h2) */
+    --section-title-size: 2.5rem; /* ← adjust this to resize all section headings at once */
+}
+html {
+    scroll-behavior: smooth;
+}
+/* About Us (“What We Offer”) should jump a bit higher (one scroll up) */
+/* adjust 80px to match your actual header height */
+#offer {
+    scroll-margin-top: 80px;
+}
+#build {
+    scroll-margin-top: -120px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+/* — Utility — */
+h1, h2, h3 {
+    font-weight: 700;
+}
+h1 {
+    font-size: 2.5rem;
+}
+h2 {
+    font-size: var(--section-title-size);  /* ← controlled by --section-title-size */
+    margin-bottom: 0.5em;
+}
+p {
+    margin-bottom: 1em;
+}
+.btn {
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+.primary {
+    background: var(--primary);
+    color: #fff;
+    padding: 0.75em 1.5em;
+    border-radius: var(--radius);
+}
+
+/* — Header — */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1px var(--gap); /* tweak this to adjust vertical position */
+    background: var(--bg);
+}
+.site-header .logo img {
+    max-height: 200px; /* adjust logo size as needed */
+    width: auto;
+}
+.nav a {
+    margin: 0 1em;
+    color: var(--fg);
+    font-weight: 500;
+}
+/* ← adjust this to shift nav block left/right */
+.site-header .nav {
+    margin-left: 900px;
+}
+
+/* — Hero — */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* keeps the H1 and subtitle centered */
+    text-align: center;   /* centers H1 and subtitle */
+    padding: 20px 2rem var(--gap) 2rem; /* tweak top padding if needed */
+}
+.hero-text {
+    max-width: 800px;
+}
+/* keep title/subtitle perfectly centered, then offset via CSS variables below */
+.hero-text h1,
+.hero-text .subtitle {
+    margin: 0 auto;
+    margin-left: var(--title-offset-x); /* ← adjust hero title horizontal position */
+    margin-top: var(--title-offset-y);  /* ← adjust hero title vertical position */
+}
+.hero-text .description {
+    text-align: left;             /* left-align this block */
+    align-self: flex-start;       /* detach from center alignment */
+    margin-left: var(--desc-offset-x); /* horizontal offset */
+    margin-top: var(--desc-offset-y);  /* vertical offset */
+    color: var(--fg);
+}
+
+/* — What We Offer — */
+.offer {
+    margin-top: 120px;
+    margin-left: 200px;
+    padding: var(--gap) 2rem;
+}
+.offer-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+.offer-list {
+    list-style: none;
+    flex: 1;
+}
+.offer-list li {
+    margin-bottom: 0.5em;
+    padding-left: 1.5em;
+    position: relative;
+}
+.offer-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+.offer-image img {
+    width: var(--offer-img-width);
+    height: var(--offer-img-height);
+    border-radius: var(--radius);
+    margin-top: -100px; /* ← move image1 up/down */
+}
+
+/* — Why Choose — */
+.why-choose {
+    padding: var(--gap) 2rem;
+}
+.choose-top {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: var(--gap);
+}
+.choose-image img {
+    width: var(--choose-img-width);
+    height: var(--choose-img-height);
+    border-radius: var(--radius);
+    margin-top: 100px;  /* ← move image2 up/down */
+    margin-left: 200px; /* ← move image2 left/right */
+}
+.choose-content {
+    margin-top: 100px;   /* ← move text block up/down */
+    margin-left: 150px;  /* ← move text block left/right */
+}
+.choose-content ul {
+    list-style: none;
+}
+.choose-content li {
+    margin-bottom: 0.75em;
+}
+
+/* — How It Works Steps — */
+.how-steps {
+    display: flex;
+    justify-content: center; /* ← center horizontally */
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 100px auto 1rem;
+}
+.step {
+    background: var(--muted);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius);
+    max-width: 220px;
+    text-align: center;
+}
+.arrow {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+/* — NDA note — */
+.nda-note {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+/* — Industries — */
+.industries {
+    padding: var(--gap) 2rem;
+    overflow: visible;
+    margin-top: 100px;
+    margin-left: 700px;
+}
+.industry-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    margin-left: -600px;
+    margin-top: 100px;
+}
+.industry-list div {
+    flex: 0 0 auto;
+    background: var(--muted);
+    padding: 0.75em 1.25em;
+    border-radius: var(--radius);
+}
+
+/* — Testimonials — */
+.testimonials {
+    padding: var(--gap) 2rem;
+    margin: 220px auto 0;
+}
+.testimonials .prev,
+.testimonials .next {
+    display: none;
+}
+.testimonial-cards {
+    display: flex;
+    gap: var(--gap);
+    margin: 100px auto 0;
+}
+.testimonial-card {
+    background: var(--muted);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    max-width: 480px;
+}
+.testimonial-img {
+    flex: 1;
+    background: #111;
+}
+.testimonial-text {
+    padding: 1.5rem;
+}
+.author {
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* — Updated Case Study Button — */
+.case-link {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: #fff;         /* white background */
+    color: #000;                    /* black text */
+    padding: 0.5em 1em;             /* button padding */
+    border-radius: var(--radius);   /* rounded corners */
+    text-decoration: none;          /* remove underline */
+    font-weight: 600;               /* slightly bolder */
+}
+
+/* — Modal Overlay — */
+.modal {
+    display: none; /* hidden by default */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 1000;
+    overflow-y: auto;
+}
+.modal-content {
+    background: var(--muted);
+    border-radius: var(--radius);
+    max-width: 700px; width: 100%;
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* ← space between title & paragraphs */
+}
+.modal-content h3 {
+    margin: 0;
+}
+.modal-content p {
+    margin: 0;
+    line-height: 1.6;
+    max-width: 600px; /* ← adjust this to change paragraph width */
+    margin-left: auto;
+    margin-right: auto;
+}
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--fg);
+    cursor: pointer;
+}
+@media (max-width: 640px) {
+    .modal-content {
+        width: 90%;
+        margin: 10% auto;
+    }
+}
+
+/* — Build Together — */
+.build {
+    padding: var(--gap) 2rem;
+}
+.build-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 100px 0 0 200px;
+}
+.build h2 {
+    margin-top: 200px;
+    margin-left: 800px;
+}
+.contact-form {
+    order: -1;
+    margin: 100px 0 0 1000px;
+    width: 600px;
+    height: 600px;
+    padding: 2rem;
+}
+.build-text {
+    margin-top: -600px;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--muted);
+    color: var(--fg);
+    padding: 0.5em 0;
+    margin-bottom: 1.5rem;
+}
+.contact-form button {
+    display: block;
+    width: auto;
+    margin-top: 0.5rem;
+}
+
+/* — Footer tweaks — */
+.site-footer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 100px 0 0;
+    padding: 60px 2rem;
+    background: #111;
+}
+.footer-logo img {
+    max-height: 200px;
+    width: auto;
+    display: block;
+    margin: 150px 0 0;
+    margin-top: 100px;
+}
+.footer-contact {
+    display: inline-flex;
+    gap: 24px;
+    margin: 260px 0 0 400px;
+    margin-top: 200px;
+}
+.footer-contact span {
+    margin-left: 1rem;
+    font-size: 0.875rem;
+}
