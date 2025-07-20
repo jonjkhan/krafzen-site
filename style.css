@@ -233,6 +233,7 @@ p {
     border-radius: var(--radius);
 }
 
+
 /* — Testimonials — */
 .testimonials {
     padding: var(--gap) 2rem;
@@ -396,3 +397,30 @@ p {
     margin-left: 1rem;
     font-size: 0.875rem;
 }
+
+/* make the list a horizontal viewport */
+.industry-list {
+    overflow: hidden;
+    position: relative;
+    margin-left: -150;  /* reset any offsets */
+  }
+  
+  /* the track holds two copies side by side */
+  .industry-list .scroll-track {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 20s linear infinite;
+  }
+  
+  /* ensure each item stays inline */
+  .industry-list .scroll-track > div {
+    flex: 0 0 auto;
+    margin-right: 1rem;  /* adjust gap */
+  }
+  
+  /* keyframes to scroll entire track left by one set’s width */
+  @keyframes scroll-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
