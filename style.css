@@ -206,9 +206,10 @@ p {
 /* — NDA note — */
 .nda-note {
     text-align: center;
-    color: var(--muted);
+    color: white;
     font-size: 0.875rem;
     margin-top: 0.5rem;
+    margin-top: 109px;
 }
 
 /* — Industries — */
