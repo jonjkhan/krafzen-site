@@ -7,8 +7,8 @@
     --radius: 16px;
     --gap: 40px;
     /* offsets for the description under the hero title */
-    --desc-offset-x: -400px;      /* ← adjust this to move the description left/right */
-    --desc-offset-y: 250px;       /* ← adjust this to move the description up/down */
+    --desc-offset-x: -300px;      /* ← adjust this to move the description left/right */
+    --desc-offset-y: 450px;       /* ← adjust this to move the description up/down */
     /* size controls for the “Why Choose” image (image2) */
     --choose-img-width: 650px;    /* ← adjust this to change image2 width */
     --choose-img-height: auto;    /* ← adjust this to change image2 height */
@@ -113,17 +113,27 @@ p {
     margin-left: var(--title-offset-x); /* ← adjust hero title horizontal position */
     margin-top: var(--title-offset-y);  /* ← adjust hero title vertical position */
 }
-.hero-text .description {
-    text-align: left;             /* left-align this block */
-    align-self: flex-start;       /* detach from center alignment */
-    margin-left: var(--desc-offset-x); /* horizontal offset */
-    margin-top: var(--desc-offset-y);  /* vertical offset */
+/* make hero a positioning context */
+.hero {
+    position: relative;
+  }
+  
+  /* pin the description absolutely */
+  .hero-text .description {
+    position: absolute;
+    top: var(--desc-offset-y);
+    left: 200px;                /* same gutter as “What We Offer” */
+    max-width: 600px;           /* prevent it running full‐width */
+    text-align: left;
     color: var(--fg);
-}
+    /* remove any margins you had here */
+    margin: 0;
+  }
+  
 
 /* — What We Offer — */
 .offer {
-    margin-top: 120px;
+    margin-top: 350px;
     margin-left: 200px;
     padding: var(--gap) 2rem;
 }
@@ -426,4 +436,11 @@ p {
   }
   
 
+  @media (max-width: 640px) {
+    .hero-text .description {
+      margin: 1rem auto 0;   /* centered under the title on small screens */
+      max-width: 100%;       /* fill the viewport */
+      padding: 0 1rem;       /* a little breathing room */
+    }
+  }
   
